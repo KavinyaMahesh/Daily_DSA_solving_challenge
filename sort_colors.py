@@ -1,6 +1,5 @@
-def sortColors( nums):
+def sortColors(nums):
     
-
     countz=0
     counto=0
     countt=0
@@ -12,7 +11,6 @@ def sortColors( nums):
             counto+=1
         else:
             countt+=1
-
 
     for i in range(countz):
         nums[i]=0
