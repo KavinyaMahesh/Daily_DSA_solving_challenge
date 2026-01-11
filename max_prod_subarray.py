@@ -2,7 +2,7 @@ def max_prod_subarray(arr):
     pre=1
     suf=1
     n=len(arr)
-    maxx=float('-inf')
+    
     ans=1
 
     for i in range(len(arr)):
