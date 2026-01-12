@@ -1,4 +1,4 @@
-def fun(a: int, b: int) -> int:
+def sum_of_int(a: int, b: int) -> int:
     """
     Returns the sum of two integers.
 
@@ -16,3 +16,8 @@ def fun(a: int, b: int) -> int:
         a=sum
         b=carry
     return a
+
+if __name__=="__main__":
+    result = sum_of_int(15, 32)
+    print("Sum is:", result)
+    
