@@ -21,11 +21,26 @@ class DoublyLinkedList:
 
         temp.next=new_node
         new_node.prev=temp
+
+    def insert_at_beginning(self, data):
+        new_node=Node(data)
+        if self.head is None:
+            self.head = new_node
+            return
+        new_node.next=self.head
+        self.head.prev=new_node
+        self.head=new_node
+
+
 if __name__=="__main__":
     dll=DoublyLinkedList()
     dll.insert_at_end(10)
     dll.insert_at_end(20)
     dll.insert_at_end(30)
+
+    dll.insert_at_beginning(5)
+    dll.insert_at_beginning(7)
+
 
     #traversing forward
     temp=dll.head
