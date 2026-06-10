@@ -4,43 +4,55 @@ class Node:
         self.next = None
         self.prev = None
 
+class DoublyLinkedList:
+    def __init__(self):
+        self.head = None
+
+    def insert_at_end(self, data):
+        new_node = Node(data)
+        # If the list is empty, make the new node the head
+        if self.head is None:
+            self.head = new_node
+            return
+        
+        # Traverse to the last node
+        temp = self.head
+        while temp.next:
+            temp = temp.next
+            
+        # Link the old tail and the new node
+        temp.next = new_node
+        new_node.prev = temp
+
 def reverse_doubly_linked_list(head):
     current = head
     last = None
     
+    # Swap next and prev pointers for all nodes
     while current is not None:
-        # Swap the next and prev pointers
         last = current.prev
         current.prev = current.next
         current.next = last
+        current = current.prev  # Moves to the next node because pointers swapped
         
-        # Move to the next node (which is now stored in current.prev)
-        current = current.prev
-        
-    # Check if the list was not empty and update head
+    # Reset head to the new front node
     if last is not None:
         head = last.prev
-        
     return head
 
-
-# Example usage:
 if __name__ == "__main__":
-    # Create a doubly linked list: 1 <-> 2 <-> 3
-    head = Node(1)
-    second = Node(2)
-    third = Node(3)
-
-    head.next = second
-    second.prev = head
-    second.next = third
-    third.prev = second
+    # Initialize the list manager
+    dll = DoublyLinkedList()
+    dll.insert_at_end(1)
+    dll.insert_at_end(2)
+    dll.insert_at_end(3)
+    dll.insert_at_end(4)
 
     # Reverse the doubly linked list
-    head = reverse_doubly_linked_list(head)
+    dll.head = reverse_doubly_linked_list(dll.head)
 
-    # Print the reversed list: should print 3, 2, 1
-    current = head
+    # Print the reversed list: 4 3 2 1
+    current = dll.head
     while current is not None:
         print(current.data, end=" ")
-        current = current.next
+        current = current.next  
